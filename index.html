@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>الرعاية الطبية المنزلية</title>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="theme-color" content="#0a4a94"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>الرعاية الطبية المنزلية</title>
 <style>
-:root{--bg:#f3f7f6;--c:#fff;--tx:#10231f;--mu:#41524d;--pr:#0a6657;--pt:#fff;--bd:#8fa8a1;--wr:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1917;--c:#172a26;--tx:#f2f8f6;--mu:#b9cac5;--pr:#4fd1b8;--pt:#06231e;--bd:#58726b;--wr:#ff8a80}}
-:root[data-theme=dark]{--bg:#0e1917;--c:#172a26;--tx:#f2f8f6;--mu:#b9cac5;--pr:#4fd1b8;--pt:#06231e;--bd:#58726b;--wr:#ff8a80}
+:root{--bg:#e8f2fb;--c:#fff;--tx:#0b2240;--mu:#3b5577;--pr:#0a4a94;--pt:#fff;--ac:#2bbfcb;--bd:#86a9cc;--wr:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#06172e;--c:#0d2a4f;--tx:#eaf3fb;--mu:#a9c3de;--pr:#5aa9f2;--pt:#04162b;--ac:#35d0dc;--bd:#3d6694;--wr:#ff8a80}}
+:root[data-theme=dark]{--bg:#06172e;--c:#0d2a4f;--tx:#eaf3fb;--mu:#a9c3de;--pr:#5aa9f2;--pt:#04162b;--ac:#35d0dc;--bd:#3d6694;--wr:#ff8a80}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:20px/1.6 system-ui,"Segoe UI",Tahoma,Arial,sans-serif}
 nav{position:fixed;top:0;bottom:0;inset-inline-start:0;width:260px;background:var(--c);border-inline-end:3px solid var(--bd);padding:calc(10px + env(safe-area-inset-top,0px)) 10px 10px;overflow-y:auto;z-index:5;transition:transform .2s}
@@ -25,6 +25,7 @@ h1{font-size:32px;margin:0 0 16px}h2{font-size:25px}
 .tag{display:inline-block;padding:2px 12px;border-radius:99px;border:2px solid var(--pr);font-weight:700}
 .mu{color:var(--mu)}table{width:100%;border-collapse:collapse}th,td{padding:10px;border:2px solid var(--bd);text-align:start}
 .wrap{overflow-x:auto}
+h1{border-bottom:4px solid var(--ac);padding-bottom:8px}.k{border-top:6px solid var(--ac)}.tag{border-color:var(--ac)}nav{border-inline-end:4px solid var(--ac)}.brand{background:var(--pr);color:var(--pt);border-radius:14px;padding:14px;margin-bottom:8px;font-weight:800;font-size:22px;text-align:center;border-bottom:5px solid var(--ac)}
 @media(max-width:820px){nav{transform:translateX(-110%)}[dir=rtl] nav{transform:translateX(110%)}nav.o{transform:none!important}main{margin-inline-start:0;padding-top:80px}#mb{display:block}}
 @media print{nav,#mb,.np{display:none!important}main{margin:0;padding:0}body{background:#fff;color:#000}}
 </style></head><body>
@@ -47,7 +48,7 @@ const st=k=>ST[k][L=='ar'?0:1];
 const NAV=[['home','🏠','الرئيسية','Home'],['patients','👨‍⚕️','المرضى','Patients'],['appts','📅','المواعيد','Appointments'],['visits','🩺','الزيارات','Visits'],['readings','📊','متابعة القراءات','Readings'],['notes','📝','الملاحظات والمشاكل','Notes & problems'],['files','📎','المرفقات','Attachments'],['reports','📋','التقارير','Reports'],['backup','💾','النسخ الاحتياطي','Backup'],['settings','⚙️','الإعدادات','Settings']];
 const go=(v,p,x)=>{V=v;if(p!==undefined)PID=p;if(x!==undefined)VID=x;document.querySelector('nav').classList.remove('o');draw();scrollTo(0,0)};
 function draw(){document.documentElement.lang=L;document.documentElement.dir=L=='ar'?'rtl':'ltr';
-$('nv').innerHTML=NAV.filter(n=>R=='d'||!['backup','settings'].includes(n[0])).map(n=>`<button class="${V==n[0]||(V=='pf'&&n[0]=='patients')||(V=='vf'&&n[0]=='visits')?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[L=='ar'?2:3]}</button>`).join('')+`<label>${t('الدور','Role')}<select onchange="R=this.value;if(R=='n'&&['backup','settings'].includes(V))V='home';draw()"><option value="d" ${R=='d'?'selected':''}>${t('طبيب','Doctor')}</option><option value="n" ${R=='n'?'selected':''}>${t('ممرض','Nurse')}</option></select></label>`;
+$('nv').innerHTML='<div class="brand">🩺 '+t('الرعاية الصحية المنزلية','Home Healthcare')+'</div>'+NAV.filter(n=>R=='d'||!['backup','settings'].includes(n[0])).map(n=>`<button class="${V==n[0]||(V=='pf'&&n[0]=='patients')||(V=='vf'&&n[0]=='visits')?'on':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[L=='ar'?2:3]}</button>`).join('')+`<label>${t('الدور','Role')}<select onchange="R=this.value;if(R=='n'&&['backup','settings'].includes(V))V='home';draw()"><option value="d" ${R=='d'?'selected':''}>${t('طبيب','Doctor')}</option><option value="n" ${R=='n'?'selected':''}>${t('ممرض','Nurse')}</option></select></label>`;
 $('m').innerHTML=VW[V]()}
 const pill=v=>`<span class="tag">${st(v.status)}</span>`;
 function vc(v){const w=D.s.tpl.replace('{date}',v.date).replace('{time}',v.time||'').replace('{name}',pn(v.pid));let ph=((D.p.find(p=>p.id==v.pid)||{}).phone||'').replace(/\D/g,'');if(ph[0]=='0')ph='966'+ph.slice(1);
